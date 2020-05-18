@@ -16,7 +16,7 @@ export class CartService {
 
   setSelectedProducts(product: Product, count: number): void {
     const selectedData: Map<Product, number> = this.selectedData.getValue();
-    if (selectedData.has(product) && count === 1) {
+    if (selectedData.has(product) && selectedData.get(product) === 1) {
       this.selectedData.next(selectedData.set(product, count++));
     }
     this.selectedData.next(selectedData.set(product, count));
