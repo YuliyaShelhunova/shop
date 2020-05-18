@@ -1,0 +1,18 @@
+<h2>List of products</h2>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Price</th>
+        <th scope="col">Categories</th>
+        <th scope="col">Order</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr app-product-comp *ngFor="let product of productList"
+            [product]="product"
+            (buyProduct)="onBuy($event)"> </tr>
+    </tbody>
+  </table>

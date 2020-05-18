@@ -1,0 +1,12 @@
+<h3 style="margin-top: 10px;">The Trash({{count}})</h3>
+<div *ngIf='isSelected; else emptyTrash'>
+    <app-cart-item-comp *ngFor="let cartItem of selected | keyvalue"
+                    [cartItem]="cartItem.key"
+                    [count]="cartItem.value"
+                    (deleteCartItem)="onDelete($event)" 
+                    (changeCountItem)="onChange($event, cartItem.key)"
+                    >
+    </app-cart-item-comp>
+    <h4>Total: {{sum}}$</h4>
+</div>
+<ng-template #emptyTrash>The trash is empty!</ng-template>
