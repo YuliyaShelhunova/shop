@@ -13,7 +13,7 @@ import { ProductCompComponent } from './components/product-comp/product.componen
   ],
   exports: [
     ProductListCompComponent,
-    ProductCompComponent
+    // ProductCompComponent // не нужно делать публичным, если используется только внутри ProductListCompComponent
   ]
 })
 export class ProductsModule { }
