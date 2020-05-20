@@ -13,6 +13,8 @@ export class CartComponent implements OnInit {
   sum = 0;
   count = 0;
 
+  // Не понятно зачем тут аутпуты?
+  // Вы же внедрили сервис и он все сделает
   @Output()
   deleteCartItem: EventEmitter<Product> = new EventEmitter();
 

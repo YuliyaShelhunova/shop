@@ -8,7 +8,7 @@ import { CartService } from 'src/app/cart/services/cart.service';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
-export class ProductListCompComponent implements OnInit {
+export class ProductListCompComponent implements OnInit { // Не надо Comp в названии
 
   productList: Array<Product>;
 
