@@ -10,42 +10,50 @@ export class CartService {
 
   constructor() { }
 
-  selectedData: BehaviorSubject<Map<Product, number>> = new BehaviorSubject(new Map());
+  cartProducts: BehaviorSubject<Map<Product, number>> = new BehaviorSubject(new Map());
 
-  selectedData$ = this.selectedData.asObservable();
+  cartProducts$ = this.cartProducts.asObservable();
 
-  setSelectedProducts(product: Product, count: number): void {
-    const selectedData: Map<Product, number> = this.selectedData.getValue();
+  addProduct(product: Product, count: number): void {
+    const selectedData: Map<Product, number> = this.cartProducts.getValue();
     if (selectedData.has(product) && selectedData.get(product) === 1) {
-      this.selectedData.next(selectedData.set(product, count++));
+      this.cartProducts.next(selectedData.set(product, count++));
     }
-    this.selectedData.next(selectedData.set(product, count));
+    this.cartProducts.next(selectedData.set(product, count));
   }
 
   getSelectedProducts(): BehaviorSubject<Map<Product, number>> {
-    return this.selectedData;
+    return this.cartProducts;
   }
 
-  deleteProduct(product: Product): void {
-    const selectedData: Map<Product, number> = this.selectedData.getValue();
+  removeProduct(product: Product): void {
+    const selectedData: Map<Product, number> = this.cartProducts.getValue();
     selectedData.forEach((value, key) => {
-        if (key === product) { selectedData.delete(key); }
+        if (key === product) {
+          selectedData.delete(key);
+        }
     });
-    this.selectedData.next(selectedData);
+    this.cartProducts.next(selectedData);
   }
 
-  getSumSelectedProducts(): number {
+  removeAllProducts(): void {
+    const selectedData: Map<Product, number> = this.cartProducts.getValue();
+    selectedData.clear();
+    this.cartProducts.next(selectedData);
+  }
+
+  getTotalSumProducts(): number {
     let sum = 0;
-    const selectedData: Map<Product, number> = this.selectedData.getValue();
+    const selectedData: Map<Product, number> = this.cartProducts.getValue();
     selectedData.forEach((value, key) => {
       sum = sum + (key.price * value);
     });
     return sum;
   }
 
-  getCountSelectedProducts(): number {
+  getTotalQuantityProducts(): number {
     let count = 0;
-    const selectedData: Map<Product, number> = this.selectedData.getValue();
+    const selectedData: Map<Product, number> = this.cartProducts.getValue();
     selectedData.forEach((value, key) => {
       count = count + value;
     });

@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TrashBackgroundDirective } from './trash-background.directive';
+import { TrashBackgroundDirective } from './directives/trash-background.directive';
+import { AboutStyleDirective } from './directives/about-style.directive';
 
 @NgModule({
-  declarations: [TrashBackgroundDirective],
-  exports: [TrashBackgroundDirective],
+  declarations: [TrashBackgroundDirective, AboutStyleDirective],
+  exports: [TrashBackgroundDirective, AboutStyleDirective],
   imports: [
     CommonModule
   ]

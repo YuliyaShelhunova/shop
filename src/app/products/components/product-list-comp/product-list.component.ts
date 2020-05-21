@@ -8,7 +8,7 @@ import { CartService } from 'src/app/cart/services/cart.service';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
-export class ProductListCompComponent implements OnInit {
+export class ProductListComponent implements OnInit {
 
   productList: Array<Product>;
 
@@ -23,6 +23,6 @@ export class ProductListCompComponent implements OnInit {
 
   onBuy(product: Product): void {
     this.buyProduct.emit(product);
-    this.cartService.setSelectedProducts(product, 1);
+    this.cartService.addProduct(product, 1);
   }
 }

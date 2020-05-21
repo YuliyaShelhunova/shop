@@ -8,7 +8,7 @@ import { Product } from '../../models/product';
   styleUrls: ['./product.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ProductCompComponent implements OnInit {
+export class ProductComponent implements OnInit {
 
   @Input()
   product: Product;

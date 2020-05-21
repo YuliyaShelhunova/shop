@@ -1,0 +1,19 @@
+<div>
+    <p appAboutStyle="blue">
+        {{generatedString}}
+    </p>
+    <p appAboutStyle="pink">
+        App: {{content.App}}
+        Version: {{content.Ver}}
+    </p>
+    <button (click)="getSettings()">Settings</button>
+    <p *ngIf="settings">
+        id: {{settings.id}}
+        login: {{settings.login}}
+        email: {{settings.email}}
+    </p>
+    
+    <p appAboutStyle="yellow"> 
+        Item from LS: {{itemFromLS}}
+    </p>
+</div>

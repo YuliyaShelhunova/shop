@@ -1,4 +1,9 @@
-<h3 style="margin-top: 10px;">The Trash({{count}})</h3>
+<h3 class="trash-count">The Trash({{count}})</h3>
+<span class="remove-all"> 
+    <button class="btn btn-secondary btn-sm" (click)="onRemoveAll()">Remove All</button>
+</span>
+<div style="clear: both;"></div>
+
 <div *ngIf='isSelected; else emptyTrash'>
     <ul class="list-group">
         <app-cart-item-comp *ngFor="let cartItem of selected | keyvalue"

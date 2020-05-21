@@ -13,29 +13,24 @@ export class CartComponent implements OnInit {
   sum = 0;
   count = 0;
 
-  @Output()
-  deleteCartItem: EventEmitter<Product> = new EventEmitter();
-
-  @Output()
-  changeCountItem: EventEmitter<number> =  new EventEmitter();
-
   constructor(public cartService: CartService) { }
 
   ngOnInit(): void {
     this.cartService.getSelectedProducts().subscribe((data => {
       this.selected = data;
-      this.sum = this.cartService.getSumSelectedProducts();
-      this.count = this.cartService.getCountSelectedProducts();
+      this.sum = this.cartService.getTotalSumProducts();
+      this.count = this.cartService.getTotalQuantityProducts();
       this.isSelected = !!this.selected.size;
     }));
   }
 
   onDelete(product: Product): void {
-    this.deleteCartItem.emit(product);
-    this.cartService.deleteProduct(product);
+    this.cartService.removeProduct(product);
   }
   onChange(count: number, product: Product) {
-    this.changeCountItem.emit(count);
-    this.cartService.setSelectedProducts(product, count);
+    this.cartService.addProduct(product, count);
+  }
+  onRemoveAll() {
+    this.cartService.removeAllProducts();
   }
 }
