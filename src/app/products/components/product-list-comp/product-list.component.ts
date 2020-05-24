@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy
 import { Product } from '../../models/product';
 import { ProductService } from '../../services/product.service';
 import { CartService } from 'src/app/cart/services/cart.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-product-list-comp',
@@ -10,7 +11,7 @@ import { CartService } from 'src/app/cart/services/cart.service';
 })
 export class ProductListComponent implements OnInit {
 
-  productList: Array<Product>;
+  productList: Observable<Array<Product>>;
 
   @Output()
   buyProduct: EventEmitter<Product> = new EventEmitter();

@@ -1,7 +1,7 @@
 <th>{{product.id}}</th>
-<td>{{product.name}}</td>
+<td>{{product.name | uppercase}}</td>
 <td>{{product.description}}</td>
-<td>{{product.price}}</td>
+<td>{{product.price | currency:'USD':'symbol-narrow'}}</td>
 <td>{{product.category}}</td>
 <td>
     <button class="btn btn-secondary" *ngIf="product.isAvailable; else nonAvailable" (click)="onBuy()">Buy</button>

@@ -1,6 +1,7 @@
 import { Component, OnInit, EventEmitter, Output, ChangeDetectionStrategy } from '@angular/core';
 import { Product } from 'src/app/products/models/product';
 import { CartService } from '../../services/cart.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-cart-list-comp',

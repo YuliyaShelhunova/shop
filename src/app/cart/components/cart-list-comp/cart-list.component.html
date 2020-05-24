@@ -1,17 +1,23 @@
 <h3 class="trash-count">The Trash({{count}})</h3>
-<span class="remove-all"> 
+<span class="remove-all">
     <button class="btn btn-secondary btn-sm" (click)="onRemoveAll()">Remove All</button>
 </span>
+<span class="sort-by-menu">
+    <select #priority class="btn btn-secondary btn-sm">
+        <option value="" selected>None</option>
+        <option value="name">Name</option>
+        <option value="count">Count</option>
+        <option value="price">Price</option>
+    </select>
+</span>
+
 <div style="clear: both;"></div>
 
 <div *ngIf='isSelected; else emptyTrash'>
     <ul class="list-group">
-        <app-cart-item-comp *ngFor="let cartItem of selected | keyvalue"
-            [cartItem]="cartItem.key"
-            [count]="cartItem.value"
-            (deleteCartItem)="onDelete($event)" 
-            (changeCountItem)="onChange($event, cartItem.key)"
-            >
+        <app-cart-item-comp *ngFor="let cartItem of selected | keyvalue | orderBy: priority.value"
+            [cartItem]="cartItem.key" [count]="cartItem.value" (deleteCartItem)="onDelete($event)"
+            (changeCountItem)="onChange($event, cartItem.key)">
         </app-cart-item-comp>
     </ul>
     <h4>Total: {{sum}}$</h4>
