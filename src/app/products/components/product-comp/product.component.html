@@ -1,9 +1,13 @@
 <th>{{product.id}}</th>
-<td>{{product.name | uppercase}}</td>
+<td><a (click)="onGoToDetailProduct()">{{product.name | uppercase}}</a></td>
 <td>{{product.description}}</td>
 <td>{{product.price | currency:'USD':'symbol-narrow'}}</td>
 <td>{{product.category}}</td>
 <td>
     <button class="btn btn-secondary" *ngIf="product.isAvailable; else nonAvailable" (click)="onBuy()">Buy</button>
     <ng-template #nonAvailable>non-available</ng-template>
+</td>
+<td *ngIf="isEditable">
+    <button class="btn btn-secondary" style="margin-right: 5px;" (click)="onEditProduct()">Edit</button>
+    <button class="btn btn-secondary" (click)="onDeleteProduct()">Delete</button>
 </td>

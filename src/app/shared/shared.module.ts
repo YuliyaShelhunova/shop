@@ -4,13 +4,15 @@ import { TrashBackgroundDirective } from './directives/trash-background.directiv
 import { AboutStyleDirective } from './directives/about-style.directive';
 import { OrderByPipe } from './pipe/order-by.pipe';
 import { FormsModule } from '@angular/forms';
+import { EnumToArrayPipe } from './pipe/enum-to-array.pipe';
 
 @NgModule({
-  declarations: [TrashBackgroundDirective, AboutStyleDirective, OrderByPipe],
+  declarations: [TrashBackgroundDirective, AboutStyleDirective, OrderByPipe, EnumToArrayPipe],
   exports: [
     TrashBackgroundDirective,
     AboutStyleDirective,
     OrderByPipe,
+    EnumToArrayPipe,
     CommonModule,
     FormsModule],
   imports: []

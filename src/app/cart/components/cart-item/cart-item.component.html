@@ -1,5 +1,5 @@
 <li appTrashBackground class="list-group-item">
-    <span>{{cartItem.name}}</span>
+    <a href="">{{cartItem.name}}</a>
     <div class="price-block">
         <span style="margin-right: 10px;">{{cartItem.price| currency:'USD':'symbol-narrow'}}</span>
         <button class="btn btn-secondary btn-sm" (click)="onDelete()">Delete</button>

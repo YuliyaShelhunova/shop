@@ -6,7 +6,10 @@ import { AppComponent } from './app.component';
 import { CartModule } from './cart/cart.module';
 import { ProductsModule } from './products/products.module';
 import { SharedModule } from './shared/shared.module';
-import { AboutModule } from './layout/about.module';
+import { LayoutModule } from './layout/layout.module';
+import { OrdersModule } from './orders/orders.module';
+import { AdminComponent } from './admin/admin.component';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -14,11 +17,13 @@ import { AboutModule } from './layout/about.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     CartModule,
     ProductsModule,
     SharedModule,
-    AboutModule
+    LayoutModule,
+    OrdersModule,
+    AdminModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
