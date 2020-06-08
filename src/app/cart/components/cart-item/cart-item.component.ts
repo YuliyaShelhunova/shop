@@ -33,5 +33,4 @@ export class CartItemComponent implements OnInit {
     const count = Number(event.target.value);
     this.changeCountItem.emit(count);
   }
-
 }

@@ -23,7 +23,11 @@ export class OrderService {
         if (products.size > 0) {
             const order = new OrderModel(products, user);
             const key = this.generatorService;
-            return this.localStorageService.setItem(key, order).pipe(data =>  data, error => error);
+            return this.localStorageService.setItem(key, order).pipe(data => data, error => error);
         }
+    }
+
+    getAllOrders(): Observable<Array<OrderModel>> {
+        return this.localStorageService.getAllItems().pipe(data => data);
     }
 }

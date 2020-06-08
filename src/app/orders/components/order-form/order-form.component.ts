@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserModel } from '../../model/user.model';
-import { OrderService } from '../../services/order.service';
 import { pluck } from 'rxjs/operators';
+import { OrderService } from '../../services/order.service';
 
 @Component({
   selector: 'app-order-form',
@@ -24,8 +24,6 @@ export class OrderFormComponent implements OnInit {
     });
   }
 
-  onSaveTask() { }
-
   onGoBack(): void {
     this.router.navigate(['/cart']);
   }
@@ -34,6 +32,7 @@ export class OrderFormComponent implements OnInit {
     this.orderService.sendOrder(this.user).subscribe(data => {
       if (data) {
         this.isSendOrder = true;
+        this.onGoBack();
       }
     });
   }

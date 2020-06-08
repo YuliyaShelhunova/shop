@@ -1,12 +1,9 @@
-import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Product } from '../../models/product';
 import { ProductService } from '../../services/product.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/core';
 import { CartService } from 'src/app/cart/services/cart.service';
-import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { Categories } from '../../models/categories.enum';
-import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-product-list-comp',
@@ -40,7 +37,7 @@ export class ProductListComponent implements OnInit {
   }
 
   onEditProduct(product: Product): void {
-    const link = ['admin/products/edit', product.id];
+    const link = ['/admin/products/edit', product.id];
     this.router.navigate(link);
   }
 

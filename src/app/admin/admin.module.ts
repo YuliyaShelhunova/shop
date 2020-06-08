@@ -12,7 +12,7 @@ import { OrdersModule } from '../orders/orders.module';
 @NgModule({
   declarations: [AdminRoutingModule.components],
   imports: [
-    // CommonModule,
+    CommonModule,
     ProductsModule,
     OrdersModule,
     AdminRoutingModule
