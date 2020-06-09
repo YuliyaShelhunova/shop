@@ -30,6 +30,8 @@ export class ProductService {
   }
 
   updateProduct(product: Product): Observable<Product> {
+    // Обычно map используется для трансформации одного массива в другой массив
+    // Для обхода используется forEach
     this.data.map(item => {
       if (item.id === product.id) {
         item = product;
