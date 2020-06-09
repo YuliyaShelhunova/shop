@@ -9,7 +9,7 @@ export class LocalStorageService {
   constructor() { }
 
   setItem(key: any, value: any): Observable<boolean> {
-    value.products = Array.from(value.products);
+    value.products = Array.from(value.products); // не стоит тут использовать свойство products. Хотелось бы чтобы можно было сохранять любые данные
     window.localStorage.setItem(key, JSON.stringify(value));
     return of(true);
   }
