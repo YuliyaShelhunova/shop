@@ -1,2 +1,2 @@
-export * from './product-comp/product.component';
-export * from './product-list-comp/product-list.component';
+export * from './product/product.component';
+export * from './product-list/product-list.component';

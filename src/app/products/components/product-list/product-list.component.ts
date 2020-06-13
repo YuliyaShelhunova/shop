@@ -33,7 +33,7 @@ export class ProductListComponent implements OnInit {
 
   onBuy(product: Product): void {
     this.buyProduct.emit(product);
-    this.cartService.addProduct(product, 1);
+    this.cartService.addProduct(product);
   }
 
   onEditProduct(product: Product): void {
@@ -42,8 +42,7 @@ export class ProductListComponent implements OnInit {
   }
 
   onDeleteProduct(product: Product) {
-    this.productService.deleteProduct(product);
-    this.productService.getProducts().subscribe(data => {
+    this.productService.deleteProduct(product).subscribe(data => {
       this.productList = data;
     });
   }

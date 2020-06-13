@@ -1,0 +1,64 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Chicken",
+      "description": "tasty chicken",
+      "price": 20,
+      "categories": "Food",
+      "isAvailable": true
+    },
+    {
+      "id": 2,
+      "name": "Harry Potter",
+      "description": "Harry Potter. The Philosophers Stone ",
+      "price": 35,
+      "categories": "Books",
+      "isAvailable": true
+    },
+    {
+      "id": 3,
+      "name": "Skirt",
+      "description": "beautifull skirt",
+      "price": 20,
+      "categories": "Clothes",
+      "isAvailable": true
+    },
+    {
+      "id": 4,
+      "name": "Phone",
+      "description": "Apple 11 ",
+      "price": 980,
+      "categories": "Electronic",
+      "isAvailable": true
+    },
+    {
+      "id": 5,
+      "name": "HP",
+      "description": "HP",
+      "price": 2000,
+      "categories": "Electronic",
+      "isAvailable": false
+    }
+  ],
+  "cartProducts": [
+    {
+      "id": 1,
+      "name": "Chicken",
+      "description": "tasty chicken",
+      "price": 20,
+      "categories": "Food",
+      "isAvailable": true,
+      "count": 2
+    },
+    {
+      "id": 2,
+      "name": "Harry Potter",
+      "description": "Harry Potter. The Philosophers Stone ",
+      "price": 35,
+      "categories": "Books",
+      "isAvailable": true,
+      "count": 1
+    }
+  ]
+}

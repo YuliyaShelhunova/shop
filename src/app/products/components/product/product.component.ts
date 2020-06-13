@@ -25,7 +25,9 @@ export class ProductComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.product.count = 1;
+   }
 
   onBuy(): void {
     console.log('Product is bought!');

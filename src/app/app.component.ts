@@ -1,15 +1,21 @@
-import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, ViewChild, ElementRef, OnInit, AfterViewInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { AppSettings } from './core/services/app-settings.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild('appTitle') appTitle: ElementRef<HTMLElement>;
-  constructor() { }
+  description: string;
 
+  constructor(private appSettings: AppSettings) { }
+
+  ngOnInit() {
+    this.appSettings.appSettings$.subscribe((settings) => this.description = settings.description);
+  }
   ngAfterViewInit() {
     this.appTitle.nativeElement.textContent = 'Shop';
   }

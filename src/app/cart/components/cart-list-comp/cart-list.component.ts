@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./cart-list.component.css']
 })
 export class CartListComponent implements OnInit {
-  selected: Map<Product, number> = new Map();
+  selected: Array<Product>;
   isSelected = false;
   sum = 0;
   count = 0;
@@ -18,19 +18,19 @@ export class CartListComponent implements OnInit {
   constructor(public cartService: CartService, private router: Router) { }
 
   ngOnInit(): void {
-    this.cartService.getSelectedProducts().subscribe((data => {
+    this.cartService.getSelectedProducts().then((data => {
       this.selected = data;
-      this.sum = this.cartService.getTotalSumProducts();
-      this.count = this.cartService.getTotalQuantityProducts();
-      this.isSelected = !!this.selected.size;
+      this.cartService.getTotalSumProducts().then(sum => this.sum = sum );
+      this.cartService.getTotalQuantityProducts().then(total => this.count = total);
+      this.isSelected = !!this.selected.length;
     }));
   }
 
   onDelete(product: Product): void {
     this.cartService.removeProduct(product);
   }
-  onChange(count: number, product: Product) {
-    this.cartService.addProduct(product, count);
+  onChange(product: Product) {
+    this.cartService.addProduct(product).then(data => data).catch();
   }
   onRemoveAll() {
     this.cartService.removeAllProducts();

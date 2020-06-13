@@ -12,25 +12,22 @@ export class CartItemComponent implements OnInit {
   @Input()
   cartItem: Product;
 
-  @Input()
-  count: number;
-
   @Output()
   deleteCartItem: EventEmitter<Product> = new EventEmitter<Product>();
 
   @Output()
-  changeCountItem: EventEmitter<number> = new EventEmitter<number>();
+  changeCountItem: EventEmitter<Product> = new EventEmitter<Product>();
 
   constructor() { }
 
   ngOnInit(): void {
+    this.cartItem.count = 1;
   }
 
   onDelete(): void {
     this.deleteCartItem.emit(this.cartItem);
   }
   onChange(event: any){
-    const count = Number(event.target.value);
-    this.changeCountItem.emit(count);
+    this.changeCountItem.emit(this.cartItem);
   }
 }

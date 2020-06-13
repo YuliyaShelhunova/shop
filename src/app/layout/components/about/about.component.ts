@@ -1,5 +1,5 @@
 import { Component, OnInit, Optional, Inject } from '@angular/core';
-import { ConfigOptionsService, ConstantService, LocalStorageService, GeneratorService } from 'src/app/core';
+import { ConfigOptionsService, ConstantService, LocalStorageService, GeneratorService } from 'src/app/core/services';
 import { DataGenerateFactory, DataGenerateN } from 'src/app/core/services/data-generate.factory';
 import { csInstance } from 'src/app/core/services/constant.service';
 import { Settings } from 'src/app/core/services/config-options.service';

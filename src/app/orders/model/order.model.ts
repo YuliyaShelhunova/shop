@@ -3,7 +3,7 @@ import { UserModel } from './user.model';
 
 export class OrderModel {
     constructor(
-        public products: Map<Product, number>,
+        public products: any,
         public user: UserModel
     ) { }
 }

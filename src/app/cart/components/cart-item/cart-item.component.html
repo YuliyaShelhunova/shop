@@ -4,5 +4,5 @@
         <span style="margin-right: 10px;">{{cartItem.price| currency:'USD':'symbol-narrow'}}</span>
         <button class="btn btn-secondary btn-sm" (click)="onDelete()">Delete</button>
     </div>
-    <input style="margin-left:30px" type="number" name="count" [(ngModel)]="count" min="0" max="10" step="1" (change)='onChange($event)'/>          
+    <input style="margin-left:30px" type="number" name="count" [(ngModel)]="cartItem.count" min="0" max="10" step="1" (change)='onChange($event)'/>          
 </li>

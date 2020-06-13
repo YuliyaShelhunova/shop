@@ -1,0 +1,18 @@
+<div>
+    Products: 
+    <ul *ngFor="let product of order.products | keyvalue">
+        <li>Name: {{product.key.name}}</li>
+        <li>Description: {{product.key.description}}</li>
+        <li>Price: {{product.key.price}}</li>
+        <li>Category: {{product.key.category}}</li>
+    
+        <li>Count: {{product.value}}</li>
+    </ul>
+    User:
+    <ul>
+        <li>First name: {{order.user.firstName}}</li>
+        <li>Last name: {{order.user.lastName}}</li>
+        <li>Address: {{order.user.address}}</li>
+        <li>Phone: {{order.user.phone}}</li>
+    </ul>
+</div>

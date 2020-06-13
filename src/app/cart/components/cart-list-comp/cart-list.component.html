@@ -17,9 +17,9 @@
     <div style="clear: both;"></div>
     
     <ul class="list-group">
-        <app-cart-item-comp *ngFor="let cartItem of selected | keyvalue | orderBy: priority.value"
-            [cartItem]="cartItem.key" [count]="cartItem.value" (deleteCartItem)="onDelete($event)"
-            (changeCountItem)="onChange($event, cartItem.key)">
+        <app-cart-item-comp *ngFor="let cartItem of selected | orderBy: priority.value"
+            [cartItem]="cartItem" (deleteCartItem)="onDelete($event)"
+            (changeCountItem)="onChange($event)">
         </app-cart-item-comp>
     </ul>
     <h4>Total: {{sum}}$</h4>
