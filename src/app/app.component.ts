@@ -1,6 +1,7 @@
 import { Component, ViewChild, ElementRef, OnInit, AfterViewInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { AppSettings } from './core/services/app-settings.service';
+import { AppSettingsModel } from './core/models/app-setting';
 
 @Component({
   selector: 'app-root',
@@ -9,12 +10,12 @@ import { AppSettings } from './core/services/app-settings.service';
 })
 export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild('appTitle') appTitle: ElementRef<HTMLElement>;
-  description: string;
+  description: AppSettingsModel;
 
   constructor(private appSettings: AppSettings) { }
 
   ngOnInit() {
-    this.appSettings.appSettings$.subscribe((settings) => this.description = settings.description);
+    this.appSettings.getSettings().subscribe((settings) => this.description = settings);
   }
   ngAfterViewInit() {
     this.appTitle.nativeElement.textContent = 'Shop';

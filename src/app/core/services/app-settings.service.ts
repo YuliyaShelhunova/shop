@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { LocalStorageService } from './local-storage.service';
-import { Observable, Subject, throwError } from 'rxjs';
-import { catchError, finalize, map, publish, refCount, retry } from 'rxjs/operators';
+import { Observable, throwError, of } from 'rxjs';
+import { catchError, finalize, map, retry, share } from 'rxjs/operators';
 import { AppSettingsModel } from '../models/app-setting';
 
 
@@ -12,33 +12,30 @@ import { AppSettingsModel } from '../models/app-setting';
 
 export class AppSettings {
     settings: AppSettingsModel;
-    private appSettings = new Subject<AppSettingsModel>();
-    appSettings$: Observable<AppSettingsModel> = this.appSettings.asObservable();
 
-    constructor(private localStorageService: LocalStorageService, private http: HttpClient) {
-        this.settings.description = 'You can select and buy some products!';
-        let settings = JSON.parse(localStorageService.getItem('appSettings')) as AppSettingsModel;
+    constructor(private localStorageService: LocalStorageService, private http: HttpClient) {}
+
+    getSettings(): Observable<AppSettingsModel> {
+        this.settings = new AppSettingsModel('You can select and buy some products!');
+        let settings = JSON.parse(this.localStorageService.getItem('appSettings'));
         if (settings) {
-            this.appSettings.next(settings);
+            return of(settings);
         } else {
-            http.get('../../../assets/app-settings.json')
+            return this.http.get('/assets/app-settings.json')
                 .pipe(retry(2),
                 map(data => {
-                    settings = data as AppSettingsModel || this.settings ;
-                    this.appSettings.next(settings);
+                    return settings = data as AppSettingsModel || this.settings ;
                 }),
-                publish(),
-                refCount(),
-                catchError(this.handleError)),
+                share(),
+                catchError(this.handleError),
                 finalize(() => {
                     this.setDescription(settings);
-                });
+                }));
         }
     }
 
     setDescription(settings: AppSettingsModel): void {
         this.localStorageService.setItem('appSettings', JSON.stringify(settings));
-        this.appSettings.next(settings);
     }
 
     private handleError(err: HttpErrorResponse) {
